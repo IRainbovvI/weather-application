@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState, useCallback } from 'react';
+import { Weather } from './components/Weather';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
+  const [data, setData] = useState();
+
+  const fetchWeather = useCallback(async () => {
+    const responce = await fetch(
+      `${process.env.REACT_APP_API_URL}/weather?units=metric&lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`
+    );
+    const responceJson = await responce.json();
+    setData(responceJson);
+  }, [latitude, longitude]);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude);
+    });
+    console.log('Latitude: ', latitude);
+    console.log('Longitude: ', longitude);
+    if (latitude && longitude) {
+      fetchWeather();
+    }
+  }, [latitude, longitude, fetchWeather]);
+
+  return <section>{data ? <Weather data={data} /> : <div></div>}</section>;
 }
 
 export default App;
