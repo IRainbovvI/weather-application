@@ -1,6 +1,5 @@
 import { DateTime } from 'luxon';
-import React, { useRef } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import React, { useRef, useEffect } from 'react';
 import '../index.css';
 import { ToolBar } from './ToolBar';
 
