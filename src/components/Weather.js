@@ -1,6 +1,5 @@
 import { DateTime } from 'luxon';
 import React, { useRef, useEffect } from 'react';
-import '../index.css';
 import { ToolBar } from './ToolBar';
 
 export const Weather = ({ data, fetch, fetchCity, error }) => {

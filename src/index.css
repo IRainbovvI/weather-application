@@ -1,10 +1,9 @@
 :root {
-  --background: rgb(76, 116, 190);
-  --card-background: rgb(136, 207, 255);
+  --background: linear-gradient(90deg, blue, aqua, white);
 }
 
 body {
-  background-color: var(--background);
+  background-image: var(--background);
 }
 
 .container {
@@ -24,7 +23,7 @@ body {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  /* background-image: url('./img/mist.jpg'); */
+  background-color: white;
   background-size: cover;
 }
 
@@ -109,13 +108,15 @@ table {
   width: 250px;
 }
 
-td {
-}
-
 .name {
   font-size: 1.5rem;
 }
 
 .text span {
   font-size: 1.5rem;
+}
+
+.secondary-text {
+  padding: 20px;
+  text-align: center;
 }

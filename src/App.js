@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Weather } from './components/Weather';
+import './index.css';
 
 function App() {
   const [latitude, setLatitude] = useState();
@@ -54,7 +55,17 @@ function App() {
           fetchCity={fetchWeatherByCity}
         />
       ) : (
-        <div></div>
+        <div className='container'>
+          <section className='card'>
+            <div className='card-inner'>
+              <div className='card-content'>
+                <section className='secondary-text'>
+                  To get actual weather in your city turn on geolocation.
+                </section>
+              </div>
+            </div>
+          </section>
+        </div>
       )}
     </section>
   );
